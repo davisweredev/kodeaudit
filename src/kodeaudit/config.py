@@ -1,4 +1,4 @@
-"""Configuration support — optional .codeaudit.toml file.
+"""Configuration support — optional .kodeaudit.toml file.
 
 Configuration is entirely optional. When absent, sensible defaults are used.
 """
@@ -25,11 +25,11 @@ DEFAULT_CONFIG = Config()
 
 
 def load_config(project_root: str | Path) -> Config:
-    """Load configuration from .codeaudit.toml if present.
+    """Load configuration from .kodeaudit.toml if present.
 
     Returns defaults when no config file exists or it can't be parsed.
     """
-    config_path = Path(project_root) / ".codeaudit.toml"
+    config_path = Path(project_root) / ".kodeaudit.toml"
     if not config_path.exists():
         return Config()
 

@@ -8,7 +8,7 @@ import sys
 def test_cli_runs_and_outputs(tmp_path):
     (tmp_path / "main.py").write_text("x = 1\n")
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "--no-color", str(tmp_path)],
+        [sys.executable, "-m", "kodeaudit.cli", "--no-color", str(tmp_path)],
         capture_output=True,
         text=True,
     )
@@ -19,18 +19,18 @@ def test_cli_runs_and_outputs(tmp_path):
 
 def test_cli_version():
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "--version"],
+        [sys.executable, "-m", "kodeaudit.cli", "--version"],
         capture_output=True,
         text=True,
     )
     assert result.returncode == 0
-    assert "codeaudit" in result.stdout.lower()
+    assert "kodeaudit" in result.stdout.lower()
 
 
 def test_cli_json_output(tmp_path):
     (tmp_path / "main.py").write_text("x = 1\n")
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "--json", str(tmp_path)],
+        [sys.executable, "-m", "kodeaudit.cli", "--json", str(tmp_path)],
         capture_output=True,
         text=True,
     )
@@ -43,7 +43,7 @@ def test_cli_json_output(tmp_path):
 
 def test_cli_nonexistent_path():
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "/nonexistent/path12345"],
+        [sys.executable, "-m", "kodeaudit.cli", "/nonexistent/path12345"],
         capture_output=True,
         text=True,
     )
@@ -53,7 +53,7 @@ def test_cli_nonexistent_path():
 def test_cli_quick_mode(tmp_path):
     (tmp_path / "main.py").write_text("x = 1\n")
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "--quick", "--json", str(tmp_path)],
+        [sys.executable, "-m", "kodeaudit.cli", "--quick", "--json", str(tmp_path)],
         capture_output=True,
         text=True,
     )
@@ -65,7 +65,7 @@ def test_cli_quick_mode(tmp_path):
 def test_cli_category_subcommand(tmp_path):
     (tmp_path / "main.py").write_text("x = 1\n")
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "structure", "--json", str(tmp_path)],
+        [sys.executable, "-m", "kodeaudit.cli", "structure", "--json", str(tmp_path)],
         capture_output=True,
         text=True,
     )
@@ -79,7 +79,7 @@ def test_cli_save_baseline(tmp_path):
     (tmp_path / "main.py").write_text("x = 1\n")
     base = tmp_path / "base.json"
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "--save", str(base), str(tmp_path)],
+        [sys.executable, "-m", "kodeaudit.cli", "--save", str(base), str(tmp_path)],
         capture_output=True,
         text=True,
     )

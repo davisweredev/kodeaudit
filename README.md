@@ -1,6 +1,6 @@
-# CodeAudit
+# KodeAudit
 
-CodeAudit is a fast, lightweight command-line tool that audits the health of any
+KodeAudit is a fast, lightweight command-line tool that audits the health of any
 software project. Run it from a project directory and get a readable report of
 structure, code quality, security signals, dependencies, Git state, and testing —
 plus a deterministic 0–100 health score and practical recommendations.
@@ -10,7 +10,7 @@ analysis into a project-context health report, and is designed so deeper
 language-specific analyzers can be added incrementally.
 
 ```text
-CodeAudit
+KodeAudit
 ────────────────────────────────────────────────
 
 Project: ~/my-projects/my-app
@@ -37,14 +37,14 @@ Overall: 94/100
 Developers need quick, honest answers about a codebase before diving in:
 *Is this project healthy? Where are the risk areas? What should I fix first?*
 
-CodeAudit answers those questions in under a second, without modifying anything.
+KodeAudit answers those questions in under a second, without modifying anything.
 
 ## Installation
 
 Requires **Python 3.10+**. No third-party runtime dependencies.
 
 ```bash
-pip install codeaudit
+pip install kodeaudit
 ```
 
 During development (from the repository root):
@@ -53,38 +53,38 @@ During development (from the repository root):
 pip install -e .
 ```
 
-The `codeaudit` command is installed on your `PATH` automatically — no manual
+The `kodeaudit` command is installed on your `PATH` automatically — no manual
 editing needed.
 
 ## Quick start
 
 ```bash
 # audit the current directory
-codeaudit
+kodeaudit
 
 # audit a specific project
-codeaudit /path/to/project
+kodeaudit /path/to/project
 
 # machine-readable output
-codeaudit --json
+kodeaudit --json
 
 # audit category subsets
-codeaudit security
-codeaudit structure
-codeaudit dependencies
-codeaudit git
-codeaudit testing
+kodeaudit security
+kodeaudit structure
+kodeaudit dependencies
+kodeaudit git
+kodeaudit testing
 
 # full HTML report
-codeaudit --html report.html
+kodeaudit --html report.html
 
 # compare against a previously saved audit
-codeaudit --save /tmp/base.json
+kodeaudit --save /tmp/base.json
 # ...make changes, then:
-codeaudit compare --store /tmp/base.json
+kodeaudit compare --store /tmp/base.json
 
 # faster subset of analysis
-codeaudit --quick
+kodeaudit --quick
 ```
 
 ## Supported languages
@@ -98,7 +98,7 @@ codeaudit --quick
 
 ### Framework detection
 
-During project detection, CodeAudit looks for framework signals such as:
+During project detection, KodeAudit looks for framework signals such as:
 
 - Python: Django, Flask, FastAPI
 - JavaScript/TypeScript: React, Next.js, Vue, Angular, Svelte, Express, NestJS, Vite, Nuxt, Fastify
@@ -108,12 +108,12 @@ or matching dependencies in `package.json`) — not just similar file names.
 
 ## Analyzer architecture
 
-CodeAudit is built around an analyzer interface. Adding a new analyzer means
+KodeAudit is built around an analyzer interface. Adding a new analyzer means
 implementing one class and registering it — the engine, scoring, and reporters
 do not change.
 
 ```text
-CodeAudit
+KodeAudit
     |
     +-- Project Detector
     |
@@ -165,21 +165,21 @@ class Analyzer(abc.ABC):
 
 | Command | Description |
 |---|---|
-| `codeaudit` | Full audit of the current directory |
-| `codeaudit <path>` | Audit a specific project |
-| `codeaudit --quick` | Faster subset of analysis |
-| `codeaudit security` | Only the security analysis |
-| `codeaudit structure` | Only structure analysis |
-| `codeaudit dependencies` | Only dependency analysis |
-| `codeaudit git` | Only Git-state analysis |
-| `codeaudit testing` | Only test-detection analysis |
-| `codeaudit python` | Python-focused analysis |
-| `codeaudit --json` | JSON output (no terminal text mixed in) |
-| `codeaudit --html <file>` | Self-contained HTML report |
-| `codeaudit --save <file>` | Save baseline for comparison |
-| `codeaudit compare` | Compare with a previous audit |
-| `codeaudit --no-color` | Plain terminal output |
-| `codeaudit --version` | Show version |
+| `kodeaudit` | Full audit of the current directory |
+| `kodeaudit <path>` | Audit a specific project |
+| `kodeaudit --quick` | Faster subset of analysis |
+| `kodeaudit security` | Only the security analysis |
+| `kodeaudit structure` | Only structure analysis |
+| `kodeaudit dependencies` | Only dependency analysis |
+| `kodeaudit git` | Only Git-state analysis |
+| `kodeaudit testing` | Only test-detection analysis |
+| `kodeaudit python` | Python-focused analysis |
+| `kodeaudit --json` | JSON output (no terminal text mixed in) |
+| `kodeaudit --html <file>` | Self-contained HTML report |
+| `kodeaudit --save <file>` | Save baseline for comparison |
+| `kodeaudit compare` | Compare with a previous audit |
+| `kodeaudit --no-color` | Plain terminal output |
+| `kodeaudit --version` | Show version |
 
 ## Scoring system
 
@@ -204,10 +204,10 @@ Every deduction is explainable by the findings that produced it.
 
 ## Configuration
 
-Configuration is entirely optional. A developer can `pip install` CodeAudit and
+Configuration is entirely optional. A developer can `pip install` KodeAudit and
 run it with zero setup.
 
-If a `.codeaudit.toml` file exists in the project root, it is honored:
+If a `.kodeaudit.toml` file exists in the project root, it is honored:
 
 ```toml
 # Extra directories to ignore during scanning
@@ -229,7 +229,7 @@ Security  = 0.25
 
 ## Security behavior
 
-CodeAudit performs **conservative** secret scanning. It reports:
+KodeAudit performs **conservative** secret scanning. It reports:
 
 - Potential hardcoded passwords, API keys, tokens, and private keys
 - `.env` and similar sensitive files
@@ -256,16 +256,16 @@ Move the credential to environment-based configuration.
 
 ## Safety
 
-CodeAudit is **read-only by default**. It never modifies source files, deletes
+KodeAudit is **read-only by default**. It never modifies source files, deletes
 or renames files, changes Git state, installs dependencies, executes project
-code, or runs project scripts. `codeaudit compare` only reads the baseline file
+code, or runs project scripts. `kodeaudit compare` only reads the baseline file
 you point it at.
 
 ## Development setup
 
 ```bash
 git clone <repository>
-cd codeaudit
+cd kodeaudit
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
@@ -283,7 +283,7 @@ pytest
 2. Implement your change against the analyzer interface.
 3. Add tests under `tests/` using temporary directories (never the developer's
    machine).
-4. Run `pytest` and verify `codeaudit` still audits its own repository cleanly.
+4. Run `pytest` and verify `kodeaudit` still audits its own repository cleanly.
 5. Open a pull request with a clear description.
 
 Style notes: simple, maintainable Python with the standard library where
@@ -300,10 +300,10 @@ category, file, line, and a recommendation.
 - [x] V6 Git + dependencies + testing analyzers
 - [x] V7 CLI modes: `--quick`, category subcommands
 - [x] V8 Reports: JSON + HTML
-- [x] V9 Comparison: `codeaudit compare`
+- [x] V9 Comparison: `kodeaudit compare`
 - [ ] V10 Optional integrations with Ruff, ESLint, Semgrep, package-manager
       audit tools (invoked explicitly and safely)
-- [ ] V11 Safe fixes (`codeaudit --fix`) for a small set of provably safe,
+- [ ] V11 Safe fixes (`kodeaudit --fix`) for a small set of provably safe,
       reversible transformations
 - [ ] JavaScript/TypeScript AST analysis
 - [ ] Duplicate-code detection heuristics

@@ -1,7 +1,7 @@
 """Tests for the Python AST analyzer."""
 
-from codeaudit.analyzers.python import PythonAnalyzer
-from codeaudit.models import Severity
+from kodeaudit.analyzers.python import PythonAnalyzer
+from kodeaudit.models import Severity
 
 
 def _mk_project(tmp_path, content, filename="main.py"):
@@ -12,9 +12,9 @@ def _mk_project(tmp_path, content, filename="main.py"):
 def _analyze(tmp_path, content, filename="main.py"):
     fpath = tmp_path / filename
     fpath.write_text(content)
-    from codeaudit.scanner import scan_project
-    from codeaudit.detector import detect_project
-    from codeaudit.analyzers.base import AnalysisContext
+    from kodeaudit.scanner import scan_project
+    from kodeaudit.detector import detect_project
+    from kodeaudit.analyzers.base import AnalysisContext
     scan = scan_project(tmp_path)
     proj = detect_project(tmp_path, scan)
     ctx = AnalysisContext(project=proj, scan=scan)

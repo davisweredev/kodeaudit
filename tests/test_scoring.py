@@ -1,9 +1,9 @@
 """Tests for the scoring engine."""
 
-from codeaudit.models import (
+from kodeaudit.models import (
     AuditResult, Finding, ProjectInfo, ProjectStats, Severity,
 )
-from codeaudit.scoring import calculate_scores
+from kodeaudit.scoring import calculate_scores
 
 
 def _make_result(findings=None, project=None, stats=None):

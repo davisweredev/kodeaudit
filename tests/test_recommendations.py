@@ -1,7 +1,7 @@
 """Tests for the recommendations engine."""
 
-from codeaudit.models import AuditResult, Finding, ProjectInfo, ProjectStats, Severity
-from codeaudit.recommendations import generate_recommendations
+from kodeaudit.models import AuditResult, Finding, ProjectInfo, ProjectStats, Severity
+from kodeaudit.recommendations import generate_recommendations
 
 
 def test_recommendations_from_findings():

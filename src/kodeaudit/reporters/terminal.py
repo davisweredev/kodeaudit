@@ -52,7 +52,7 @@ def render_terminal(result: AuditResult, use_color: bool = True, file=None) -> N
     out = file or sys.stdout
     c = lambda s, color: f"{color}{s}{RESET}" if use_color else s
 
-    header = "CodeAudit"
+    header = "KodeAudit"
     divider = "─" * 48
 
     print(c(header, BOLD), file=out)

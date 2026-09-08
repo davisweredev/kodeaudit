@@ -1,9 +1,9 @@
 """Tests for general analyzer."""
 
-from codeaudit.analyzers.general import GeneralAnalyzer
-from codeaudit.scanner import scan_project
-from codeaudit.detector import detect_project
-from codeaudit.analyzers.base import AnalysisContext
+from kodeaudit.analyzers.general import GeneralAnalyzer
+from kodeaudit.scanner import scan_project
+from kodeaudit.detector import detect_project
+from kodeaudit.analyzers.base import AnalysisContext
 
 
 def _analyze(tmp_path):

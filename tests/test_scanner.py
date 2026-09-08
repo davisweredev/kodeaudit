@@ -1,7 +1,7 @@
 """Tests for the file scanner."""
 
-from codeaudit.scanner import scan_project
-from codeaudit import scanner
+from kodeaudit.scanner import scan_project
+from kodeaudit import scanner
 
 
 def test_ignored_directories(tmp_path):

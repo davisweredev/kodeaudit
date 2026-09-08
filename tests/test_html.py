@@ -1,7 +1,7 @@
 """Tests for HTML reporter."""
 
-from codeaudit.models import AuditResult, Finding, ProjectInfo, ProjectStats, Severity
-from codeaudit.reporters.html import render_html
+from kodeaudit.models import AuditResult, Finding, ProjectInfo, ProjectStats, Severity
+from kodeaudit.reporters.html import render_html
 
 
 def test_html_contains_scores():

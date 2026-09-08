@@ -7,7 +7,7 @@ import sys
 
 def test_compare_no_baseline(tmp_path):
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "compare",
+        [sys.executable, "-m", "kodeaudit.cli", "compare",
          "--store", str(tmp_path / "missing.json"), str(tmp_path)],
         capture_output=True,
         text=True,
@@ -25,7 +25,7 @@ def test_compare_with_baseline(tmp_path):
         "scores": {"Security": 60.0, "Code Quality": 80.0},
     }))
     result = subprocess.run(
-        [sys.executable, "-m", "codeaudit.cli", "compare",
+        [sys.executable, "-m", "kodeaudit.cli", "compare",
          "--store", str(base), str(tmp_path)],
         capture_output=True,
         text=True,

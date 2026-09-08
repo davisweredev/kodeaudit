@@ -1,6 +1,6 @@
 """Tests for configuration loading."""
 
-from codeaudit.config import load_config, DEFAULT_CONFIG
+from kodeaudit.config import load_config, DEFAULT_CONFIG
 
 
 def test_default_config_when_no_file(tmp_path):
@@ -9,7 +9,7 @@ def test_default_config_when_no_file(tmp_path):
 
 
 def test_load_ignored_dirs(tmp_path):
-    (tmp_path / ".codeaudit.toml").write_text(
+    (tmp_path / ".kodeaudit.toml").write_text(
         'ignored_dirs = ["vendor", "generated"]\n'
     )
     cfg = load_config(tmp_path)
@@ -17,7 +17,7 @@ def test_load_ignored_dirs(tmp_path):
 
 
 def test_load_thresholds(tmp_path):
-    (tmp_path / ".codeaudit.toml").write_text(
+    (tmp_path / ".kodeaudit.toml").write_text(
         '[thresholds]\n'
         'large_function_lines = 30\n'
         'max_parameters = 5\n'
@@ -28,7 +28,7 @@ def test_load_thresholds(tmp_path):
 
 
 def test_load_enabled_analyzers(tmp_path):
-    (tmp_path / ".codeaudit.toml").write_text(
+    (tmp_path / ".kodeaudit.toml").write_text(
         'enabled_analyzers = ["python", "security"]\n'
     )
     cfg = load_config(tmp_path)
@@ -36,13 +36,13 @@ def test_load_enabled_analyzers(tmp_path):
 
 
 def test_invalid_toml_falls_back_to_defaults(tmp_path):
-    (tmp_path / ".codeaudit.toml").write_text("not [valid toml")
+    (tmp_path / ".kodeaudit.toml").write_text("not [valid toml")
     cfg = load_config(tmp_path)
     assert cfg == DEFAULT_CONFIG
 
 
 def test_scoring_weights(tmp_path):
-    (tmp_path / ".codeaudit.toml").write_text(
+    (tmp_path / ".kodeaudit.toml").write_text(
         '[scoring_weights]\n'
         'Testing = 0.5\n'
         'Security = 0.2\n'

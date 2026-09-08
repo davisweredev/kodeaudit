@@ -1,9 +1,9 @@
 """Tests for code quality analyzer."""
 
-from codeaudit.analyzers.codequality import CodeQualityAnalyzer
-from codeaudit.scanner import scan_project
-from codeaudit.detector import detect_project
-from codeaudit.analyzers.base import AnalysisContext
+from kodeaudit.analyzers.codequality import CodeQualityAnalyzer
+from kodeaudit.scanner import scan_project
+from kodeaudit.detector import detect_project
+from kodeaudit.analyzers.base import AnalysisContext
 
 
 def _analyze(tmp_path):

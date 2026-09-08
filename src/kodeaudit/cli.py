@@ -1,4 +1,4 @@
-"""CLI entry point — CodeAudit command-line interface."""
+"""CLI entry point — KodeAudit command-line interface."""
 
 from __future__ import annotations
 
@@ -100,7 +100,7 @@ def _run_selected_analyzers(result: AuditResult, ctx: AnalysisContext,
                 severity=Severity.INFO,
                 title=f"Analyzer '{name}' encountered an error",
                 message="An unexpected error occurred during analysis.",
-                recommendation="This may indicate a bug in CodeAudit. Please report it.",
+                recommendation="This may indicate a bug in KodeAudit. Please report it.",
             ))
 
 
@@ -180,14 +180,14 @@ def run_audit(
 
 
 def _default_store() -> Path:
-    return Path.home() / ".codeaudit" / "last.json"
+    return Path.home() / ".kodeaudit" / "last.json"
 
 
 def cmd_compare(path_arg: str, store: str, quick: bool, json_mode: bool) -> None:
     store_path = Path(store) if store else _default_store()
     if not store_path.exists():
         print("No previous audit found.")
-        print("Run `codeaudit --save <file>` once to create a baseline.")
+        print("Run `kodeaudit --save <file>` once to create a baseline.")
         sys.exit(1)
     try:
         previous = json.loads(store_path.read_text(encoding="utf-8"))
@@ -235,20 +235,20 @@ def cmd_compare(path_arg: str, store: str, quick: bool, json_mode: bool) -> None
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="codeaudit",
-        description="CodeAudit — Professional project health CLI",
+        prog="kodeaudit",
+        description="KodeAudit — Professional project health CLI",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "Commands:\n"
-            "  codeaudit              Audit the current directory\n"
-            "  codeaudit <path>       Audit a specific project directory\n"
-            "  codeaudit security     Audit only the security category\n"
-            "  codeaudit structure    Audit only the structure category\n"
-            "  codeaudit dependencies Audit only dependencies\n"
-            "  codeaudit git          Audit only Git state\n"
-            "  codeaudit testing      Audit only test coverage signals\n"
-            "  codeaudit python       Run all Python-focused analyzers\n"
-            "  codeaudit compare      Compare with a previously saved audit\n"
+            "  kodeaudit              Audit the current directory\n"
+            "  kodeaudit <path>       Audit a specific project directory\n"
+            "  kodeaudit security     Audit only the security category\n"
+            "  kodeaudit structure    Audit only the structure category\n"
+            "  kodeaudit dependencies Audit only dependencies\n"
+            "  kodeaudit git          Audit only Git state\n"
+            "  kodeaudit testing      Audit only test coverage signals\n"
+            "  kodeaudit python       Run all Python-focused analyzers\n"
+            "  kodeaudit compare      Compare with a previously saved audit\n"
         ),
     )
     parser.add_argument(
@@ -276,7 +276,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Save audit results to FILE for later comparison")
     parser.add_argument(
         "--store", metavar="FILE",
-        help="Baseline file to read for `compare` (default: ~/.codeaudit/last.json)")
+        help="Baseline file to read for `compare` (default: ~/.kodeaudit/last.json)")
     return parser
 
 
@@ -284,7 +284,7 @@ def _normalize_argv(argv: list[str]) -> list[str]:
     """Reorder argv so positionals come before options.
 
     argparse cannot match `nargs="*"` positionals that are interspersed
-    with options (e.g. `codeaudit compare --store F /path`). Moving all
+    with options (e.g. `kodeaudit compare --store F /path`). Moving all
     options to the end keeps positionals contiguous and parseable.
     """
     value_opts = {"--save", "--html", "--store"}

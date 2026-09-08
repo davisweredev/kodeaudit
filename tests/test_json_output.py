@@ -2,8 +2,8 @@
 
 import json
 
-from codeaudit.models import AuditResult, Finding, ProjectInfo, ProjectStats, Severity
-from codeaudit.reporters.json_report import render_json
+from kodeaudit.models import AuditResult, Finding, ProjectInfo, ProjectStats, Severity
+from kodeaudit.reporters.json_report import render_json
 
 
 def test_json_output_valid():

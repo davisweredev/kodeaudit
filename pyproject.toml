@@ -3,13 +3,13 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "codeaudit"
+name = "kodeaudit"
 version = "0.1.0"
 description = "Professional project health CLI — analyze codebases for quality, security, and best practices."
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-authors = [{ name = "CodeAudit Contributors" }]
+authors = [{ name = "KodeAudit Contributors" }]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 [project.scripts]
-codeaudit = "codeaudit.cli:main"
+kodeaudit = "kodeaudit.cli:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]

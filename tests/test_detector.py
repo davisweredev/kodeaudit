@@ -1,7 +1,7 @@
 """Tests for project detection."""
 
-from codeaudit.scanner import scan_project
-from codeaudit.detector import detect_project
+from kodeaudit.scanner import scan_project
+from kodeaudit.detector import detect_project
 
 
 def test_detect_python_project(python_project):

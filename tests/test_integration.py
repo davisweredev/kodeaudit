@@ -1,6 +1,6 @@
 """Integration tests — full audit pipeline."""
 
-from codeaudit.cli import run_audit
+from kodeaudit.cli import run_audit
 
 
 def test_full_audit_python_project(python_project):

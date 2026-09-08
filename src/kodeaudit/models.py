@@ -1,4 +1,4 @@
-"""Core domain models for CodeAudit findings and results."""
+"""Core domain models for KodeAudit findings and results."""
 
 from __future__ import annotations
 
