@@ -13,16 +13,19 @@ language-specific analyzers can be added incrementally.
 CodeAudit
 ────────────────────────────────────────────────
 
-Project: /home/davis-were/Public/codeaudit
+Project: ~/my-projects/my-app
 Languages: Python 100.0%
+Size: Medium (37 source files, ~1,200 lines)
+Git: detected (main, 42 commits)
+Testing: ✓ Tests detected
 
 PROJECT HEALTH
 ────────────────────────────────────────────────
 
-Overall: 90/100
+Overall: 94/100
 
   Structure           100  ████████████████████
-  Code Quality         67  █████████████░░░░░░░
+  Code Quality         80  ████████████████░░░░
   Security            100  ████████████████████
   Dependencies        100  ████████████████████
   Git                 100  ████████████████████
